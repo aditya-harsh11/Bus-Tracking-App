@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "198032731569",
+    "project_id": "melodic-furnace-390112",
+    "storage_bucket": "melodic-furnace-390112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198032731569:android:73087ca18b816094292190",
+        "android_client_info": {
+          "package_name": "com.example.google_mao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "198032731569-ff091q975kufl84qcf4s2n2t8lo9c5mb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC52udew1muDtlNiQCb3s7qGUKdJo06t8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198032731569-ff091q975kufl84qcf4s2n2t8lo9c5mb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
