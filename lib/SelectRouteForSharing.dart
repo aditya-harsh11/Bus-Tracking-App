@@ -22,15 +22,15 @@ Widget build(BuildContext context) => Scaffold(
         
          
          
-        /* StreamBuilder(
+      /*StreamBuilder(
          
                 stream: FirebaseFirestore.instance
                     .collection('isUsing').snapshots(),
                     
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  DocumentSnapshot index1  = snapshot.data!.docs.singleWhere(((element) => element.id=='index1' ));
+                  DocumentSnapshot index11  = snapshot.data!.docs.singleWhere((element) => element.id== 'index1');
 
-                  if ((index1.get('insideRouteScreen'))==true){
+                  if ((index11.get('insideRouteScreen'))==true){
                       return 
                       const Text(
                         'Bus Route Already Sharing',
@@ -40,13 +40,15 @@ Widget build(BuildContext context) => Scaffold(
                        );
                 }
                 else{
+                  
                   Navigator.push(context, MaterialPageRoute (builder: (context) => TeacherLocationSharing()));
                   _updateInsideRouteScreen();
-                   return Text('');
+                   return Text('ARE YOU STUPID');
                 }
                 }
                 );
-     */
+                */
+     
      _updateInsideRouteScreen();
      Navigator.push(context, MaterialPageRoute (builder: (context) => TeacherLocationSharing()));
     }
