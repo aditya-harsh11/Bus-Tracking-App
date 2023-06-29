@@ -1,10 +1,21 @@
+
+
+
+
+
+
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mao/TeacherLocationSharing.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 
+
+
 class selectRouteForSharing extends StatelessWidget {
+  late DocumentSnapshot snapshot;
+  bool flagForinsideRouteScreenFound = false;
   @override
 Widget build(BuildContext context) => Scaffold(
 
@@ -19,38 +30,44 @@ Widget build(BuildContext context) => Scaffold(
 
       child: Text("Route:1"),
       onPressed: () {
-        
-         
-         
-      /*StreamBuilder(
-         
-                stream: FirebaseFirestore.instance
-                    .collection('isUsing').snapshots(),
-                    
-                builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                  DocumentSnapshot index11  = snapshot.data!.docs.singleWhere((element) => element.id== 'index1');
+       var db = FirebaseFirestore.instance;
+          db.collection("isUsing").where('insideRouteScreen' , isEqualTo: false).get().then(
+  (querySnapshot) {
+   
 
-                  if ((index11.get('insideRouteScreen'))==true){
-                      return 
-                      const Text(
-                        'Bus Route Already Sharing',
-                        style: const TextStyle(color: Colors.yellow),
-                         textAlign: TextAlign.center,
-                         textDirection: TextDirection.ltr,
-                       );
-                }
-                else{
+    for (var docSnapshot in querySnapshot.docs) { 
+     if(docSnapshot.id == 'index1'){
+          Navigator.push(context, MaterialPageRoute (builder: (context) => TeacherLocationSharing()));   
+       _updateInsideRouteScreen();
+       flagForinsideRouteScreenFound = true;
+           break;
+     }
+    }
+    if(!flagForinsideRouteScreenFound){
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content:
+          Container(
+           child: Text('Route Is Already Being Shared'),
+         //  decoration: BoxDecoration(color:Color.fromARGB(255, 255, 249, 250)),
+           
+          ),
+                  behavior: SnackBarBehavior.floating,
+              //    backgroundColor: Colors.transparent,
+                  elevation: 0,
                   
-                  Navigator.push(context, MaterialPageRoute (builder: (context) => TeacherLocationSharing()));
-                  _updateInsideRouteScreen();
-                   return Text('ARE YOU STUPID');
-                }
-                }
-                );
-                */
+          )
+          
+        );
+    }
+  },
+
+);
+        
+
+           
+         
+                
      
-     _updateInsideRouteScreen();
-     Navigator.push(context, MaterialPageRoute (builder: (context) => TeacherLocationSharing()));
     }
   ),
 )
