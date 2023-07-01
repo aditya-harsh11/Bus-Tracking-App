@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_mao/landingPage.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'dart:async';
-import 'package:location/location.dart' as loc;
 
-void main()async {
- WidgetsFlutterBinding.ensureInitialized();
-    await Firebase.initializeApp();
-   
- runApp( const MaterialApp(home: MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(const MaterialApp(home: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
@@ -27,8 +23,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home:  landingPage(),
+      home: const landingPage(),
     );
   }
 }
-//changee
