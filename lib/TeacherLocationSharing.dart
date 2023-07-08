@@ -44,11 +44,6 @@ class TeacherLocationSharingOveride extends State<TeacherLocationSharing> {
                 _stopListening();
               },
               child: const Text('Stop Live Sharing')),
-          TextButton(
-              onPressed: () {
-                _getLocation();
-              },
-              child: const Text('Send Current Location')),
           Expanded(
               child: StreamBuilder(
             stream:

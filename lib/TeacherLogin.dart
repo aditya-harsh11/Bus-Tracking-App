@@ -8,23 +8,17 @@ class TeacherLogin extends StatelessWidget {
 
   TeacherLogin({super.key});
   Future<void> login(BuildContext context) async {
-    //Confirms mail and password with firebase
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
-
-      //Authentication successful then navigate to selectrouteforsharing
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => selectRouteForSharing()),
       );
-    }
-
-    // Login errors
-    on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
@@ -34,7 +28,7 @@ class TeacherLogin extends StatelessWidget {
       print(e.toString());
     }
   }
-//Text fields and buttons
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
