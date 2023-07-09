@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_mao/Studentselect.dart';
+import 'package:google_mao/StudentSelect.dart';
 import 'package:google_mao/TeacherLogin.dart';
 
 class LandingPage extends StatelessWidget {

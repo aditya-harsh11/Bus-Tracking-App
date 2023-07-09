@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_mao/TeacherLocationSharing.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_mao/studentview.dart';
+import 'package:google_mao/StudentView1.dart';
 
 class studentselect extends StatelessWidget {
   late DocumentSnapshot snapshot;
   bool flagForinsideRouteScreenFound = false;
 
-  
+  studentselect({super.key});
+
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
@@ -22,9 +22,7 @@ class studentselect extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                           /*change this to student view*/ studentView()),
+                  MaterialPageRoute(builder: (context) => const studentView()),
                 );
               })));
 }

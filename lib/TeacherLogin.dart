@@ -18,12 +18,14 @@ class TeacherLogin extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (context) => selectRouteForSharing()),
       );
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
+    } on FirebaseAuthException {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Container(
+          child: const Text('Wrong mail or password'),
+        ),
+        behavior: SnackBarBehavior.floating,
+        elevation: 0,
+      ));
     } catch (e) {
       print(e.toString());
     }

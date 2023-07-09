@@ -1,7 +1,5 @@
-//test this page
+//make more order tracking pages for more student view
 import 'dart:async';
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
@@ -9,22 +7,18 @@ import 'package:google_mao/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-class studentView extends StatefulWidget {
-  
+class OrderTrackingPage extends StatefulWidget {
+  final String user_id;
+  const OrderTrackingPage(this.user_id, {super.key});
 
   @override
-  State<studentView> createState() => studentviewState();
+  State<OrderTrackingPage> createState() => OrderTrackingPageState();
 }
 
-class studentviewState extends State<studentView> {
+class OrderTrackingPageState extends State<OrderTrackingPage> {
   final Completer<GoogleMapController> _controller = Completer();
-  
-  var longi;
-  var lati;
-    
   late GoogleMapController upperController;
-  static const LatLng sourceLocation =
-      LatLng(12.997216660253093, 77.57941368343165);
+  static const LatLng sourceLocation = LatLng(13.0032, 77.5824);
   static const LatLng destination =
       LatLng(13.101733400175208, 77.58373978219565);
 
@@ -89,20 +83,16 @@ class studentviewState extends State<studentView> {
   }
 
   @override
-  void initState(){
-     getLatitude();
-    getLongitude();
+  void initState() {
     getCurrentLocation();
     setCustomMarkerIcon();
     getPolyPoints();
     super.initState();
- 
   }
 
   @override
- build(BuildContext context)  {
-   
-    return Scaffold (
+  Widget build(BuildContext context) {
+    return Scaffold(
         appBar: AppBar(
           title: const Text(
             "Track order",
@@ -113,17 +103,19 @@ class studentviewState extends State<studentView> {
             stream:
                 FirebaseFirestore.instance.collection('location').snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (!snapshot.hasData || longi == null || lati == null) {
+              if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
               }
-              return GoogleMap (
+              return GoogleMap(
                 mapType: MapType.normal,
                 zoomGesturesEnabled: true,
-                initialCameraPosition: CameraPosition  (
-                    target: LatLng  (
-                     lati,longi
-                   ),
-                    zoom: 14.47) ,
+                initialCameraPosition: CameraPosition(
+                    target: LatLng(
+                        snapshot.data!.docs.singleWhere((element) =>
+                            element.id == widget.user_id)['latitude'],
+                        snapshot.data!.docs.singleWhere((element) =>
+                            element.id == widget.user_id)['longitude']),
+                    zoom: 14.47),
                 zoomControlsEnabled: true,
                 onMapCreated: (GoogleMapController controller) async {
                   setState(() {
@@ -151,80 +143,27 @@ class studentviewState extends State<studentView> {
                     position: destination,
                   ),
                   Marker(
-                    
                       markerId: const MarkerId('BusLocation'),
                       icon: BitmapDescriptor.defaultMarkerWithHue(
                           BitmapDescriptor.hueMagenta),
-                          
                       position: LatLng(
-                         lati ,longi))
+                          snapshot.data!.docs.singleWhere((element) =>
+                              element.id == widget.user_id)['latitude'],
+                          snapshot.data!.docs.singleWhere((element) =>
+                              element.id == widget.user_id)['longitude']))
                 },
               );
             }));
   }
 
   Future<void> mapChanger(AsyncSnapshot<QuerySnapshot> snapshot) async {
-   
     await upperController.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
-          
             target: LatLng(
-              
-             lati,longi),
+                snapshot.data!.docs.singleWhere(
+                    (element) => element.id == widget.user_id)['latitude'],
+                snapshot.data!.docs.singleWhere(
+                    (element) => element.id == widget.user_id)['longitude']),
             zoom: 14.47)));
   }
-  
-
- getLongitude() async{
-  var db = FirebaseFirestore.instance;
-  final docRef = db.collection('location').doc('user1');
-  docRef.snapshots().listen((event) async => 
-  await db.collection("location").where('finder' , isEqualTo: true).get().then(
-   (querySnapshot) {
-
-
-  for (var docSnapshot in querySnapshot.docs) { 
-     if(docSnapshot.id == 'user1') { 
-      
- longi =  docSnapshot.data()['longitude'];
-        
-
-     }
-     
-    }
-   
-}
-)
- 
-  );
- 
-  }
-
-  getLatitude()async {
-  var ab = FirebaseFirestore.instance;
-  final docRef = ab.collection('location').doc('user1');
-  docRef.snapshots().listen((event) async => 
-  await ab.collection("location").where('finder' , isEqualTo: true).get().then(
-   (querySnapshot) {
-
-
-  for (var docSnapshot in querySnapshot.docs) { 
-     if(docSnapshot.id == 'user1') { 
-      
- lati =  docSnapshot.data()['latitude'];
-        
-
-     }
-     
-    }
-   
-}
-)
- 
-  );
-
-  }
- 
-
-
 }
