@@ -1,20 +1,20 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mao/OrderTrackingPage1.dart';
+import 'package:google_mao/OrderTrackingPage/OrderTrackingPage12.dart';
 import 'package:location/location.dart' as loc;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class TeacherLocationSharing extends StatefulWidget {
-  const TeacherLocationSharing({super.key});
+class TeacherLocationSharing12 extends StatefulWidget {
+  const TeacherLocationSharing12({super.key});
 
   @override
-  TeacherLocationSharingOveride createState() =>
-      TeacherLocationSharingOveride();
+  TeacherLocationSharing12Overide createState() =>
+      TeacherLocationSharing12Overide();
 }
 
-class TeacherLocationSharingOveride extends State<TeacherLocationSharing> {
+class TeacherLocationSharing12Overide extends State<TeacherLocationSharing12> {
   final loc.Location location = loc.Location();
   bool canExit = true;
   StreamSubscription<loc.LocationData>? _locationSubscription;
@@ -90,13 +90,15 @@ class TeacherLocationSharingOveride extends State<TeacherLocationSharing> {
       );
 
   _getLocation() async {
-    //make if loop here using if button pressed and add routes here
     try {
       final loc.LocationData locationResult = await location.getLocation();
-      await FirebaseFirestore.instance.collection('location').doc('user1').set({
+      await FirebaseFirestore.instance
+          .collection('location')
+          .doc('user12')
+          .set({
         'latitude': locationResult.latitude,
         'longitude': locationResult.longitude,
-        'name': 'Route:1'
+        'name': 'Route:12'
       }, SetOptions(merge: true));
     } catch (e) {
       print(e);
@@ -114,10 +116,13 @@ class TeacherLocationSharingOveride extends State<TeacherLocationSharing> {
         _locationSubscription = null;
       });
     }).listen((loc.LocationData currentLocation) async {
-      await FirebaseFirestore.instance.collection('location').doc('user1').set({
+      await FirebaseFirestore.instance
+          .collection('location')
+          .doc('user12')
+          .set({
         'latitude': currentLocation.latitude,
         'longitude': currentLocation.longitude,
-        'name': 'Route:1'
+        'name': 'Route:12'
       }, SetOptions(merge: true));
     });
   }
@@ -151,13 +156,12 @@ class TeacherLocationSharingOveride extends State<TeacherLocationSharing> {
               actions: <Widget>[
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(false),
-                  //<-- SEE HERE
                   child: const Text('No'),
                 ),
                 TextButton(
                   onPressed: () {
                     _stopListening();
-                    _updateInsideRouteScreen();
+                    _updateInsideRouteScreen12();
                     Navigator.of(context).pop(true);
                   },
                   child: const Text('Yes'),
@@ -167,17 +171,17 @@ class TeacherLocationSharingOveride extends State<TeacherLocationSharing> {
           )) ??
           false;
     } else {
-      _updateInsideRouteScreen();
+      _updateInsideRouteScreen12();
       return true;
     }
   }
 
-  Future<void> _updateInsideRouteScreen() async {
+  Future<void> _updateInsideRouteScreen12() async {
     await FirebaseFirestore.instance
         .collection("isUsing")
-        .doc('index1')
+        .doc('index12')
         .update({
-      'insideRouteScreen': false,
+      'insideRouteScreen12': false,
     });
   }
 }

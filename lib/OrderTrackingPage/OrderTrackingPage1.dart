@@ -1,9 +1,8 @@
-//make more order tracking pages for more student view
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-import 'package:google_mao/constants.dart';
+import 'package:google_mao/components/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
@@ -18,7 +17,8 @@ class OrderTrackingPage extends StatefulWidget {
 class OrderTrackingPageState extends State<OrderTrackingPage> {
   final Completer<GoogleMapController> _controller = Completer();
   late GoogleMapController upperController;
-  static const LatLng sourceLocation = LatLng(13.0032, 77.5824);
+  static const LatLng sourceLocation =
+      LatLng(13.003372861690982, 77.5824426819156);
   static const LatLng destination =
       LatLng(13.101733400175208, 77.58373978219565);
 
