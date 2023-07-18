@@ -6,14 +6,14 @@ import 'package:google_mao/components/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-class studentView extends StatefulWidget {
-  const studentView({super.key});
+class studentview13 extends StatefulWidget {
+  const studentview13({super.key});
 
   @override
-  State<studentView> createState() => studentviewState();
+  State<studentview13> createState() => studentview13State();
 }
 
-class studentviewState extends State<studentView> {
+class studentview13State extends State<studentview13> {
   final Completer<GoogleMapController> _controller = Completer();
 
   var longi;
@@ -159,14 +159,14 @@ class studentviewState extends State<studentView> {
 
   getLongitude() async {
     var db = FirebaseFirestore.instance;
-    final docRef = db.collection('location').doc('user1');
+    final docRef = db.collection('location').doc('user13');
     docRef.snapshots().listen((event) async => await db
             .collection("location")
             .where('finder', isEqualTo: true)
             .get()
             .then((querySnapshot) {
           for (var docSnapshot in querySnapshot.docs) {
-            if (docSnapshot.id == 'user1') {
+            if (docSnapshot.id == 'user13') {
               longi = docSnapshot.data()['longitude'];
             }
           }
@@ -175,14 +175,14 @@ class studentviewState extends State<studentView> {
 
   getLatitude() async {
     var ab = FirebaseFirestore.instance;
-    final docRef = ab.collection('location').doc('user1');
+    final docRef = ab.collection('location').doc('user13');
     docRef.snapshots().listen((event) async => await ab
             .collection("location")
             .where('finder', isEqualTo: true)
             .get()
             .then((querySnapshot) {
           for (var docSnapshot in querySnapshot.docs) {
-            if (docSnapshot.id == 'user1') {
+            if (docSnapshot.id == 'user13') {
               lati = docSnapshot.data()['latitude'];
             }
           }
