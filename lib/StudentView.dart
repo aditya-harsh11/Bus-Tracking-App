@@ -20,7 +20,8 @@ class studentviewState extends State<studentView> {
   var lati;
 
   late GoogleMapController upperController;
-  static const LatLng sourceLocation = LatLng(13.0032, 77.5824);
+  static const LatLng sourceLocation =
+      LatLng(13.003372861690982, 77.5824426819156);
   static const LatLng destination =
       LatLng(13.101733400175208, 77.58373978219565);
 
