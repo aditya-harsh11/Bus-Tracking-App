@@ -21,7 +21,7 @@ class TeacherLogin extends StatelessWidget {
     } on FirebaseAuthException {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Container(
-          child: const Text('Wrong mail or password'),
+          child: const Text('Wrong Email or Password'),
         ),
         behavior: SnackBarBehavior.floating,
         elevation: 0,

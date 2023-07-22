@@ -140,6 +140,12 @@ class TeacherLocationSharing8Overide extends State<TeacherLocationSharing8> {
     }
   }
 
+  @override
+  void dispose() {
+    _updateInsideRouteScreen8();
+    super.dispose();
+  }
+
   Future<bool> _onPop() async {
     if (canExit == false) {
       return (await showDialog(
@@ -153,9 +159,14 @@ class TeacherLocationSharing8Overide extends State<TeacherLocationSharing8> {
                   child: const Text('No'),
                 ),
                 TextButton(
-                  onPressed: () {
-                    _stopListening();
-                    _updateInsideRouteScreen8();
+                  onPressed: () async {
+                    await _stopListening();
+                    await FirebaseFirestore.instance
+                        .collection("isUsing")
+                        .doc('index8')
+                        .update({
+                      'insideRouteScreen8': false,
+                    });
                     Navigator.of(context).pop(true);
                   },
                   child: const Text('Yes'),

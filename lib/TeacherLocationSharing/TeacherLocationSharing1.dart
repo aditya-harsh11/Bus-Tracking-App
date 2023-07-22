@@ -77,7 +77,7 @@ class TeacherLocationSharing1Overide extends State<TeacherLocationSharing1> {
                           icon: const Icon(Icons.directions),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => OrderTrackingPage(
+                                builder: (context) => OrderTrackingPage1(
                                     snapshot.data!.docs[index].id)));
                           },
                         ),
@@ -140,6 +140,12 @@ class TeacherLocationSharing1Overide extends State<TeacherLocationSharing1> {
     }
   }
 
+  @override
+  void dispose() {
+    _updateInsideRouteScreen1();
+    super.dispose();
+  }
+
   Future<bool> _onPop() async {
     if (canExit == false) {
       return (await showDialog(
@@ -153,9 +159,14 @@ class TeacherLocationSharing1Overide extends State<TeacherLocationSharing1> {
                   child: const Text('No'),
                 ),
                 TextButton(
-                  onPressed: () {
-                    _stopListening();
-                    _updateInsideRouteScreen1();
+                  onPressed: () async {
+                    await _stopListening();
+                    await FirebaseFirestore.instance
+                        .collection("isUsing")
+                        .doc('index1')
+                        .update({
+                      'insideRouteScreen1': false,
+                    });
                     Navigator.of(context).pop(true);
                   },
                   child: const Text('Yes'),

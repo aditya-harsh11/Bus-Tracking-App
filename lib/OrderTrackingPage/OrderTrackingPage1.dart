@@ -6,15 +6,15 @@ import 'package:google_mao/components/constants.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
 
-class OrderTrackingPage extends StatefulWidget {
+class OrderTrackingPage1 extends StatefulWidget {
   final String user_id;
-  const OrderTrackingPage(this.user_id, {super.key});
+  const OrderTrackingPage1(this.user_id, {super.key});
 
   @override
-  State<OrderTrackingPage> createState() => OrderTrackingPageState();
+  State<OrderTrackingPage1> createState() => OrderTrackingPage1State();
 }
 
-class OrderTrackingPageState extends State<OrderTrackingPage> {
+class OrderTrackingPage1State extends State<OrderTrackingPage1> {
   final Completer<GoogleMapController> _controller = Completer();
   late GoogleMapController upperController;
   static const LatLng sourceLocation =
