@@ -16,6 +16,7 @@ class TeacherLocationSharing1 extends StatefulWidget {
 
 class TeacherLocationSharing1Overide extends State<TeacherLocationSharing1> {
   final loc.Location location = loc.Location();
+  int indexForRoute1 = 0;
   bool canExit = true;
   StreamSubscription<loc.LocationData>? _locationSubscription;
 
@@ -45,16 +46,18 @@ class TeacherLocationSharing1Overide extends State<TeacherLocationSharing1> {
               },
               child: const Text('Stop Live Sharing')),
           Expanded(
-              child: StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection('location').snapshots(),
-            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (!snapshot.hasData) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              return WillPopScope(
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('location')
+                  .where('name', isEqualTo: 'Route:1')
+                  .snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return WillPopScope(
                   onWillPop: _onPop,
                   child: ListView.builder(
                     itemCount: snapshot.data?.docs.length,
@@ -83,9 +86,11 @@ class TeacherLocationSharing1Overide extends State<TeacherLocationSharing1> {
                         ),
                       );
                     },
-                  ));
-            },
-          ))
+                  ),
+                );
+              },
+            ),
+          )
         ]),
       );
 

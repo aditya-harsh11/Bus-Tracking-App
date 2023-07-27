@@ -16,6 +16,7 @@ class TeacherLocationSharing12 extends StatefulWidget {
 
 class TeacherLocationSharing12Overide extends State<TeacherLocationSharing12> {
   final loc.Location location = loc.Location();
+  int indexForRoute12 = 0;
   bool canExit = true;
   StreamSubscription<loc.LocationData>? _locationSubscription;
 
@@ -45,16 +46,18 @@ class TeacherLocationSharing12Overide extends State<TeacherLocationSharing12> {
               },
               child: const Text('Stop Live Sharing')),
           Expanded(
-              child: StreamBuilder(
-            stream:
-                FirebaseFirestore.instance.collection('location').snapshots(),
-            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (!snapshot.hasData) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              return WillPopScope(
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('location')
+                  .where('name', isEqualTo: 'Route:12')
+                  .snapshots(),
+              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return WillPopScope(
                   onWillPop: _onPop,
                   child: ListView.builder(
                     itemCount: snapshot.data?.docs.length,
@@ -77,15 +80,17 @@ class TeacherLocationSharing12Overide extends State<TeacherLocationSharing12> {
                           icon: const Icon(Icons.directions),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => OrderTrackingPage(
+                                builder: (context) => OrderTrackingPage12(
                                     snapshot.data!.docs[index].id)));
                           },
                         ),
                       );
                     },
-                  ));
-            },
-          ))
+                  ),
+                );
+              },
+            ),
+          )
         ]),
       );
 

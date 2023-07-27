@@ -42,37 +42,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 1"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
                               .where('insideRouteScreen1', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index1') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing1()));
-                                  _updateInsideRouteScreen1();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index1') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing1(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen1();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -82,37 +84,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 2"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
                               .where('insideRouteScreen2', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index2') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing2()));
-                                  _updateInsideRouteScreen2();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index2') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing2(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen2();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -122,37 +126,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 3"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen3', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index3') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing3()));
-                                  _updateInsideRouteScreen3();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index3') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing3(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen3();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -162,37 +168,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 4"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen4', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index4') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing4()));
-                                  _updateInsideRouteScreen4();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index4') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing4(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen4();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -202,37 +210,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 5"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen5', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index5') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing5()));
-                                  _updateInsideRouteScreen5();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index5') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing5(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen5();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -242,37 +252,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 6"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen6', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index6') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing6()));
-                                  _updateInsideRouteScreen6();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index6') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing6(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen6();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -282,37 +294,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 7"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
                               .where('insideRouteScreen7', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index7') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing7()));
-                                  _updateInsideRouteScreen7();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index7') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing7(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen7();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -328,37 +342,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 8"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen8', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index8') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing8()));
-                                  _updateInsideRouteScreen8();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index8') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing8(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen8();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -368,37 +384,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 9"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen9', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index9') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing9()));
-                                  _updateInsideRouteScreen9();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index9') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing9(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen9();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -408,37 +426,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 10"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen10', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index10') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing10()));
-                                  _updateInsideRouteScreen10();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index10') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing10(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen10();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -448,37 +468,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 11"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen11', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index11') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing11()));
-                                  _updateInsideRouteScreen11();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index11') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing11(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen11();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -488,37 +510,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 12"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen12', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index12') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing12()));
-                                  _updateInsideRouteScreen12();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index12') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing12(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen12();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -528,37 +552,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 13"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen13', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index13') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing13()));
-                                  _updateInsideRouteScreen13();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index13') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing13(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen13();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
@@ -568,37 +594,39 @@ class selectRouteForSharing extends StatelessWidget {
                         child: const Text("Route 14"),
                         onPressed: () async {
                           var db = FirebaseFirestore.instance;
+                          bool flagForinsideRouteScreenFound = false;
                           db
                               .collection("isUsing")
-                              .where('insideRouteScreen', isEqualTo: false)
+                              .where('insideRouteScreen14', isEqualTo: false)
                               .get()
-                              .then(
-                            (querySnapshot) {
-                              for (var docSnapshot in querySnapshot.docs) {
-                                if (docSnapshot.id == 'index144') {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              TeacherLocationSharing14()));
-                                  _updateInsideRouteScreen14();
-                                  flagForinsideRouteScreenFound = true;
-                                  break;
-                                }
+                              .then((querySnapshot) {
+                            for (var docSnapshot in querySnapshot.docs) {
+                              if (docSnapshot.id == 'index14') {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const TeacherLocationSharing14(),
+                                  ),
+                                );
+                                _updateInsideRouteScreen14();
+                                flagForinsideRouteScreenFound = true;
+                                break;
                               }
-                              if (!flagForinsideRouteScreenFound) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
+                            }
+                            if (!flagForinsideRouteScreenFound) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
                                   content: Container(
-                                    child:
-                                        Text('Route Is Already Being Shared'),
+                                    child: const Text(
+                                        'Route Is Already Being Shared'),
                                   ),
                                   behavior: SnackBarBehavior.floating,
                                   elevation: 0,
-                                ));
-                              }
-                            },
-                          );
+                                ),
+                              );
+                            }
+                          });
                         },
                       ),
                       const SizedBox(height: 10),
