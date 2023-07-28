@@ -1,12 +1,45 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mao/SelectRouteForSharing.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class TeacherLogin extends StatelessWidget {
+class TeacherLogin extends StatefulWidget {
+  @override
+  _TeacherLoginState createState() => _TeacherLoginState();
+}
+
+class _TeacherLoginState extends State<TeacherLogin> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  TeacherLogin({super.key});
+  @override
+  void initState() {
+    super.initState();
+    checkLoginStatus();
+  }
+
+  Future<void> checkLoginStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedEmail = prefs.getString('email');
+    String? storedPassword = prefs.getString('password');
+
+    if (storedEmail != null && storedPassword != null) {
+      try {
+        UserCredential userCredential =
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: storedEmail,
+          password: storedPassword,
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => selectRouteForSharing()),
+        );
+      } catch (e) {
+        print(e.toString());
+      }
+    }
+  }
+
   Future<void> login(BuildContext context) async {
     try {
       UserCredential userCredential =
@@ -14,7 +47,12 @@ class TeacherLogin extends StatelessWidget {
         email: emailController.text,
         password: passwordController.text,
       );
-      Navigator.push(
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('email', emailController.text);
+      prefs.setString('password', passwordController.text);
+
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => selectRouteForSharing()),
       );
