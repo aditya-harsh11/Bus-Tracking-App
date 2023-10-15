@@ -4,6 +4,8 @@ import 'package:google_mao/SelectRouteForSharing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TeacherLogin extends StatefulWidget {
+  const TeacherLogin({super.key});
+
   @override
   _TeacherLoginState createState() => _TeacherLoginState();
 }

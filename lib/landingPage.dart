@@ -22,7 +22,7 @@ class LandingPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => TeacherLogin()),
+                    MaterialPageRoute(builder: (context) => const TeacherLogin()),
                   );
                 },
               ),
